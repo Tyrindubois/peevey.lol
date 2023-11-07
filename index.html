@@ -20,6 +20,31 @@
     <meta property="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://pvuvybu.carrd.co/">
     <link href="./WEB_files/css2" rel="stylesheet" type="text/css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = new Audio();
+            var canPlayMP3 = audio.canPlayType('audio/mpeg');
+
+            if (canPlayMP3 === "probably" || canPlayMP3 === "maybe") {
+                audio.src = './media/mp3.mp3';
+            } else {
+                audio.src = './media/mp3.ogg'; // Provide an alternative format like OGG if MP3 is not supported
+            }
+
+            audio.loop = true;
+            audio.play();
+
+            // Fading out
+            var fadeOutInterval = setInterval(function() {
+                if (audio.volume > 0.1) {
+                    audio.volume -= 0.1;
+                } else {
+                    clearInterval(fadeOutInterval);
+                    audio.pause();
+                }
+            }, 200); // Adjust the interval (in milliseconds) for smoother or quicker fade-out
+        });
+    </script>
     <style>
         html,
         body,
